@@ -58,9 +58,10 @@ export default function MovieModal({ trigger, id }) {
             </h6>
             <p>{data.Metascore} ⭐</p>
             <button
+              className="modal__add"
               onClick={() => {
-                console.log({ addToWatchlist, data });
                 addToWatchlist(data);
+                setOpen(false);
               }}
             >
               Add to watchlist

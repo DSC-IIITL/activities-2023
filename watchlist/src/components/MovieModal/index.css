@@ -32,9 +32,16 @@
   left: 0;
   right: 0;
   bottom: 0;
-  animation: fade-out 0.15s ease-in-out forwards;
+
+  transition: opacity 0.15s ease-in-out;
+
+  &.invisible {
+    opacity: 0;
+    animation: fade-out 0.15s ease-in-out forwards;
+  }
 
   &.visible {
+    opacity: 1;
     animation: fade-in 0.15s ease-in-out forwards;
   }
 }
@@ -56,5 +63,24 @@
 
   img {
     width: 100%;
+  }
+
+  .modal__add {
+    margin-top: 2rem;
+    width: 100%;
+    background-color: hsl(0deg, 0%, 100%);
+    color: hsl(0deg, 0%, 21%);
+    border: 1px solid transparent;
+    background-color: hsl(171deg, 100%, 41%);
+    cursor: pointer;
+
+    padding: 1rem 0.75rem;
+
+    &:active,
+    &:focus,
+    &:hover {
+      outline: none;
+      box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
+    }
   }
 }
