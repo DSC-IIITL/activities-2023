@@ -1,10 +1,12 @@
-import { useCallback, useState } from "react";
+import { useCallback, useContext } from "react";
 import Searchbar from "./components/Searchbar";
 import Card from "./components/Card";
+import Watchlist from "./contexts/Watchlist";
 
 function App() {
-  const previousWatchlist = [];
-  const [watchlist] = useState(previousWatchlist);
+  const { watchlist } = useContext(Watchlist);
+
+  console.log({ watchlist });
 
   const fetchData = useCallback(async (searchQuery) => {
     const res = await fetch(
@@ -21,15 +23,12 @@ function App() {
   return (
     <>
       <section className="search">
-        <Searchbar
-          fetchResults={fetchData}
-          onChange={(val) => console.log({ val })}
-        />
+        <Searchbar fetchResults={fetchData} />
       </section>
       <section className="watchlist">
-        {watchlist.map((movie) => {
-          <Card key={movie.imdbID} movie={movie} />;
-        })}
+        {watchlist.map((movie) => (
+          <Card key={movie.imdbID} movie={movie} />
+        ))}
       </section>
     </>
   );
