@@ -2,6 +2,7 @@
   "name": "watchlist",
   "private": true,
   "version": "0.0.0",
+  "main": "main.jsx",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +14,8 @@
     "@tabler/icons-react": "^2.46.0",
     "dotenv": "^16.4.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
