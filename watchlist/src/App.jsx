@@ -2,6 +2,7 @@ import { useCallback, useContext } from "react";
 import Searchbar from "./components/Searchbar";
 import Card from "./components/Card";
 import Watchlist from "./contexts/Watchlist";
+import Table from "./components/Table";
 
 function App() {
   const { watchlist } = useContext(Watchlist);
@@ -10,8 +11,7 @@ function App() {
 
   const fetchData = useCallback(async (searchQuery) => {
     const res = await fetch(
-      `http://www.omdbapi.com/?s=${searchQuery}&apikey=${
-        import.meta.env.VITE_TOKEN
+      `http://www.omdbapi.com/?s=${searchQuery}&apikey=${import.meta.env.VITE_TOKEN
       }`
     );
     const data = await res.json();
@@ -26,9 +26,10 @@ function App() {
         <Searchbar fetchResults={fetchData} />
       </section>
       <section className="watchlist">
-        {watchlist.map((movie) => (
+        {/* {watchlist.map((movie) => (
           <Card key={movie.imdbID} movie={movie} />
-        ))}
+        ))} */}
+        <Table data={watchlist}/>
       </section>
     </>
   );
