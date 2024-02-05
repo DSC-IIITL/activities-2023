@@ -1,6 +1,5 @@
 import { useCallback, useContext } from "react";
 import Searchbar from "./components/Searchbar";
-import Card from "./components/Card";
 import Watchlist from "./contexts/Watchlist";
 import Table from "./components/Table";
 

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { IconLoader } from "@tabler/icons-react";
-import Table from "../Table";
 import "./index.css";
 import MovieModal from "../MovieModal";
 
