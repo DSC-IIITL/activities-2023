@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { IconLoader } from "@tabler/icons-react";
 import "./index.css";
 import MovieModal from "../MovieModal";
+import useDebouce from "../../hooks/useDebounce";
+import useBackdrop from "../../hooks/useBackdrop";
 
 export default function Searchbar({ onChange = () => {}, fetchResults }) {
   const [searchString, setSearchString] = useState("");
@@ -9,8 +11,19 @@ export default function Searchbar({ onChange = () => {}, fetchResults }) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [loading, setLoading] = useState(false);
-  const isTypingRef = useRef(null);
-  const searchbarRef = useRef(null);
+
+  const { ref: searchbarRef } = useBackdrop(open, setOpen);
+  const { callback: debouncedFetchResults, fire } = useDebouce(() => {
+    if (searchString !== "") {
+      setLoading(true);
+      fetchResults(searchString)
+        .then((data) => {
+          setResults(data);
+        })
+        .catch((err) => console.warn(err))
+        .finally(() => setLoading(false));
+    }
+  });
 
   useEffect(() => {
     setOpen(true);
@@ -21,36 +34,8 @@ export default function Searchbar({ onChange = () => {}, fetchResults }) {
   }, [onChange, value]);
 
   useEffect(() => {
-    if (isTypingRef.current !== null) clearTimeout(isTypingRef.current);
-    isTypingRef.current = setTimeout(() => {
-      if (searchString !== "") {
-        setLoading(true);
-        fetchResults(searchString)
-          .then((data) => {
-            setResults(data);
-          })
-          .catch((err) => console.warn(err))
-          .finally(() => setLoading(false));
-      }
-    }, 2000);
-  }, [fetchResults, searchString]);
-
-  const handleBlur = (ev) => {
-    if (!searchbarRef.current.contains(ev.target)) {
-      setOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    if (open) {
-      document.addEventListener("click", handleBlur);
-    } else {
-      document.removeEventListener("click", handleBlur);
-    }
-    return () => {
-      document.removeEventListener("click", handleBlur);
-    };
-  }, [open]);
+    debouncedFetchResults();
+  }, [searchString]);
 
   return (
     <div className="search-bar" ref={searchbarRef}>
@@ -65,16 +50,7 @@ export default function Searchbar({ onChange = () => {}, fetchResults }) {
         onKeyDown={(ev) => {
           if (ev.key === "Enter") {
             // Search immediately
-            if (isTypingRef.current !== null) clearTimeout(isTypingRef.current);
-            if (searchString !== "") {
-              setLoading(true);
-              fetchResults(searchString)
-                .then((data) => {
-                  setResults(data);
-                })
-                .catch((err) => console.warn(err))
-                .finally(() => setLoading(false));
-            }
+            fire();
           }
         }}
       />
