@@ -62,8 +62,29 @@ After cloning the repository, you can run the files locally to run the react cod
    npx vite
    ```
    Open your browser and search for localhost:5173. You will be able to see the web page rendered in your browser.
+   
+2. **Enabling the API fetch functionality**: Rename the .env.example file as .env . Generate one API KEY from omdb API website https://www.omdbapi.com/  . Replace 'OMDB_API_KEY=abcdef' by VITE_TOKEN='generated API Key'. Now refresh your browser page and search for any movie by typing its name in the search bar. The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are contributed and maintained by their users.
 
- 1. **Enabling the API fetch functionality**: Rename the .env.example file as .env . Generate one API KEY from omdb API website https://www.omdbapi.com/
-                                              Replace 
+3. **Creating your watchlist**: Click on add to watchlist to add the movie in your watchlist. You can remove it anytime by clicking on the delete button.
 
+
+## Tutorial Content
+Inside this repository, you will find:
+- **Use of Tailwind CSS**
+- **React Hooks**
+- **Props**
+- **Usage of a free API and how to link it to your projects**
+
+Feel free to explore the provided content, follow the tutorial instructions, and experiment with code to enhance your understanding.
+
+
+## Additional Resources
+To further enhance your skills and web development knowledge, consider exploring the following resources:
+- [W3-schools](https://www.w3schools.com/REACT/DEFAULT.ASP): The famous websites to learn basics of reactJS.
+- [Tailwind CSS](https://tailwindcss.com/docs/installation): The tailwind css original documentation to add css style to your code and make your work easier.
+- [Vite-based build setup](https://vitejs.dev/guide/): Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects.
+- [ESLint](https://eslint.org/): Find and fix problems in your JavaScript code.
+
+
+With this tutorial and the additional resources, you'll be well on your way to becoming proficient in ReactJS and enhancing your web development skills. Happy coding!
 
