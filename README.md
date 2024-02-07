@@ -38,10 +38,8 @@ To get started with the tutorial, follow these steps to clone the repository to 
 1. **Clone the Repository**: Open your terminal or command prompt and use the following command to clone the repository:
 
    ```bash
-   git clone https://github.com/username/activities-2023.git
+   git clone https://github.com/DSC-IIITL/activities-2023.git
    ```
-
-   Replace `username` with your GitHub username.
 
 2. **Navigate to the Repository Folder**: Use the `cd` (change directory) command to navigate to the cloned repository folder:
 
