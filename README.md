@@ -15,7 +15,7 @@ Welcome to the GDSC (Google Developer Student Clubs) ReactJS repository! This re
 
 ## Overview  
 This repository serves as the base for you to learn React concepts in a more better way. This repository showcases and demonstrates various modern JavaScript features and concepts.
-In this tutorial, you will learn the essential concepts such as file structure of React, Export & Export Default, Hooks, Props, Tailwind CSSS, API fetching and API linking.
+In this tutorial, you will learn the essential concepts such as file structure of React, Export & Export Default, Hooks, Props, Tailwind CSS, API fetching and API linking.
 
 
 ## Prerequisites
