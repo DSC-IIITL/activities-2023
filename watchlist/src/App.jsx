@@ -6,8 +6,6 @@ import Watchlist from "./contexts/Watchlist";
 function App() {
   const { watchlist } = useContext(Watchlist);
 
-  console.log({ watchlist });
-
   const fetchData = useCallback(async (searchQuery) => {
     const res = await fetch(
       `http://www.omdbapi.com/?s=${searchQuery}&apikey=${

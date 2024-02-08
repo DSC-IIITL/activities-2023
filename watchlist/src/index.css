@@ -28,6 +28,9 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 2rem;
+    align-items: stretch;
+    justify-content: center;
   }
 
   &.overflow-hidden {

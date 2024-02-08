@@ -1,4 +1,4 @@
-.modal__btn {
+.modal-trigger-btn {
   all: unset;
   cursor: pointer;
   position: relative;
@@ -23,7 +23,7 @@
   }
 }
 
-.modal__backdrop {
+.modal-backdrop {
   background-color: rgba(0, 0, 0, 0.15);
   z-index: 10000;
 
@@ -38,15 +38,17 @@
   &.invisible {
     opacity: 0;
     animation: fade-out 0.15s ease-in-out forwards;
+    pointer-events: none;
   }
 
   &.visible {
     opacity: 1;
     animation: fade-in 0.15s ease-in-out forwards;
+    pointer-events: all;
   }
 }
 
-.modal__dialog {
+.modal-dialog {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -61,11 +63,11 @@
   padding: 2rem;
   width: 400px;
 
-  img {
+  .poster {
     width: 100%;
   }
 
-  .modal__add {
+  .modal-add-btn {
     margin-top: 2rem;
     width: 100%;
     background-color: hsl(0deg, 0%, 100%);

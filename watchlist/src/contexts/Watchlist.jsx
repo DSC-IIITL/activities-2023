@@ -7,6 +7,9 @@ export const WatchlistProvider = ({ children }) => {
   const [watchlist, setWatchlist] = useState(previousWatchlist);
 
   const addToWatchlist = (data) => {
+    if (watchlist.some(({ imdbID }) => imdbID === data.imdbID)) {
+      return;
+    }
     setWatchlist((watchlist) => [...watchlist, data]);
   };
 

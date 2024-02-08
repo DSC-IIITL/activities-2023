@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IconLoader } from "@tabler/icons-react";
-import "./index.css";
+import styles from "./index.module.css";
 import MovieModal from "../MovieModal";
 import useDebouce from "../../hooks/useDebounce";
 import useBackdrop from "../../hooks/useBackdrop";
@@ -38,9 +38,9 @@ export default function Searchbar({ onChange = () => {}, fetchResults }) {
   }, [searchString]);
 
   return (
-    <div className="search-bar" ref={searchbarRef}>
+    <div className={styles.searchBar} ref={searchbarRef}>
       <input
-        className="search-bar__input"
+        className={styles.input}
         type="text"
         value={searchString}
         onChange={(ev) => setSearchString(ev.target.value)}
@@ -54,10 +54,12 @@ export default function Searchbar({ onChange = () => {}, fetchResults }) {
           }
         }}
       />
-      {loading && <IconLoader className="loader-icon" />}
+      {loading && <IconLoader className={styles.loaderIcon} />}
       {results.length > 0 && (
         <div
-          className={`search-bar__results ${open ? "visible" : "invisible"}`}
+          className={`${styles.results} ${
+            open ? styles.visible : styles.invisible
+          }`}
         >
           {results.map((result) => (
             <MovieModal
@@ -65,13 +67,18 @@ export default function Searchbar({ onChange = () => {}, fetchResults }) {
               id={result.imdbID}
               trigger={
                 <div
-                  className="search-bar__results__result"
+                  className={styles.result}
                   onClick={() => {
                     setValue(result);
                   }}
                 >
                   {result.Poster && (
-                    <img src={result.Poster} alt={"Poster"} height={"100%"} />
+                    <img
+                      className={styles.poster}
+                      src={result.Poster}
+                      alt={"Poster"}
+                      height={"100%"}
+                    />
                   )}
                   <span>{`${result.Title}, ${result.Year}`}</span>
                 </div>
