@@ -21,7 +21,6 @@ export default function useBackdrop(open, setOpen) {
   }, [open, setOpen]);
 
   useEffect(() => {
-    console.log("useEffect", open);
     if (open) {
       document.addEventListener("click", handleBlur);
     } else {

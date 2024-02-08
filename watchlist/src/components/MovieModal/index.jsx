@@ -23,8 +23,6 @@ export default function MovieModal({ trigger, id }) {
     return () => document.body.classList.remove("overflow-hidden");
   }, [isModalOpen]);
 
-  console.log({ styles });
-
   return (
     <>
       <button
