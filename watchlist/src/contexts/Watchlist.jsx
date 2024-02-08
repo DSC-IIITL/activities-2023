@@ -1,23 +1,21 @@
 import { createContext, useState } from "react";
 
+/**
+ * @type {import("react").Context<{
+ *  watchlist: import("../types").Movie[];
+ * addToWatchlist: (data: import("../types").Movie) => void;
+ * removeFromWatchlist: (id: string) => void;
+ * >}}
+ */
 const Watchlist = createContext();
 
 export const WatchlistProvider = ({ children }) => {
   const previousWatchlist = [];
   const [watchlist, setWatchlist] = useState(previousWatchlist);
 
-  const addToWatchlist = (data) => {
-    if (watchlist.some(({ imdbID }) => imdbID === data.imdbID)) {
-      return;
-    }
-    setWatchlist((watchlist) => [...watchlist, data]);
-  };
+  const addToWatchlist = (data) => {};
 
-  const removeFromWatchlist = (id) => {
-    setWatchlist((watchlist) =>
-      watchlist.filter(({ imdbID }) => id !== imdbID)
-    );
-  };
+  const removeFromWatchlist = (id) => {};
 
   return (
     <Watchlist.Provider
